@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>This is the home page</title>
+    </head>
+    <body>
+        <h1>Hackogi</h1>
+            <p>
+                {%for hackathon in active_hackatons%}
+                    <h3>{{hackathon.title}}</h3>
+                    <p>
+                        {{hackathon.overview}}
+                    </p>
+                {%endfor%}
+            </p>
+    </body>
+</html>
