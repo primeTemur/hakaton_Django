@@ -5,7 +5,26 @@
     <body>
         <h1>Hackogi</h1>
             <p>
+                <h2>Active Hackathon</h2>
                 {%for hackathon in active_hackatons%}
+                    <h3>{{hackathon.title}}</h3>
+                    <p>
+                        {{hackathon.overview}}
+                    </p>
+                {%endfor%}
+            </p>
+            <p>
+                <h2>Upcoming Hackathon</h2>
+                {%for hackathon in upcoming_hackatons%}
+                    <h3>{{hackathon.title}}</h3>
+                    <p>
+                        {{hackathon.overview}}
+                    </p>
+                {%endfor%}
+            </p>
+            <p>
+                <h2>Past Hackathon</h2>
+                {%for hackathon in past_hackatons%}
                     <h3>{{hackathon.title}}</h3>
                     <p>
                         {{hackathon.overview}}
