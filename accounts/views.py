@@ -15,17 +15,15 @@ class LoginView(View):
         })
 
     def post(self,request):
-        form=CustomLoginForm(request.POST)
+        form=CustomLoginForm(request,request.POST)
         if form.is_valid():
             username=form.cleaned_data['username']
             password=form.cleaned_data['password']
 
-            user=authenticate(request,username,password)
+            user=authenticate(request,username=username,password=password)
 
             if user:
                 login(request,user)
                 return redirect('home')
-            
-        return render(request,"accounts/login.html",context={
-            'form':form
-        })
+
+        return render(request,"accounts/login.html",context={'form':form})

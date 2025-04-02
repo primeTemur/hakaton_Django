@@ -6,6 +6,6 @@ from .views import home_page
 urlpatterns = [
     
     path('',home_page,name='home'),
-    path("accounts/",include('accounts.urls')),
+    path("accounts/",include('accounts.urls',namespace='accounts')),
     path('admin/', admin.site.urls),
 ]

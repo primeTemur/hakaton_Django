@@ -1,1 +1,6 @@
-Login / Register 
+{% if user.is_authenticated %}
+    <a href="">LogOut</a>
+    {% else %}
+    <a href="{% url 'accounts:login' %}">Login</a>    
+{% endif %}
+/ <a href="">Register</a> 
