@@ -2,10 +2,20 @@ from django.shortcuts import render,redirect
 from django.views import View
 from django.contrib.auth import authenticate,login,logout
 
-from django.contrib.auth.forms import AuthenticationForm
+from .forms import CustomLoginForm,RegisterForm
 
-class CustomLoginForm(AuthenticationForm):
-    pass
+class RegisterView(View):
+    def get(self,request):
+        form=RegisterForm()
+        return render(request,"accounts/register.html",context={'form':form })
+
+    def post(self,request):
+        form=RegisterForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('accounts:login')
+        return render(request,'accounts/register.html',context={'form':form})
 
 class LoginView(View):
     def get(self,request):
@@ -27,3 +37,8 @@ class LoginView(View):
                 return redirect('home')
 
         return render(request,"accounts/login.html",context={'form':form})
+
+def logout_view(request):
+    logout(request)
+    return redirect("home")
+
