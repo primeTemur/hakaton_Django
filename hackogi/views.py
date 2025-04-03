@@ -21,6 +21,6 @@ def home_page(request):
 
     return render(request,'home.html',context={
         'active_hackatons':active_hackathons,
-        'upcoming_hackatons':upcoming_hackatons,
-        'past_hackatons':past_hackatons,
+        'upcoming_hackathons':upcoming_hackatons,
+        'past_hackathons':past_hackatons,
     })
