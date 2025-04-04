@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Event
+from .models import Event,Idea
 
 class EventAdmin(admin.ModelAdmin):
     list_display=(
@@ -10,5 +10,13 @@ class EventAdmin(admin.ModelAdmin):
         'end_date',
         'is_approved',
     )
-
 admin.site.register(Event,EventAdmin)
+
+class IdeaAdmin(admin.ModelAdmin):
+    list_display=(
+        'event',
+        'owner',
+        'title',
+        'owerview'
+    )
+admin.site.register(Idea,IdeaAdmin)

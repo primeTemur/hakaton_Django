@@ -19,5 +19,21 @@ class Event(BaseModel):
         return self.title
     
 class Idea(BaseModel):
-    pass
+    event=models.ForeignKey(
+        Event,
+        on_delete=models.CASCADE,
+        related_name='ideas',
+        related_query_name='idea'
+    )
+    owner=models.ForeignKey(
+        'accounts.CustomUser',
+        on_delete=models.CASCADE,
+        related_name='ideas',
+        related_query_name='idea'    
+    )
 
+    title=models.CharField(_('title'),max_length=250)
+    owerview=models.TextField(_('overview'))
+
+    def __str__(self):
+        return self.title

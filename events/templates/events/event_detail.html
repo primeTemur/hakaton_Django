@@ -30,7 +30,7 @@
             {{ event.overview }}
         </div>
         
-        {% comment %} <div class="tab-pane fade" id="nav-ideas" role="tabpanel" aria-labelledby="nav-ideas-tab">
+         <div class="tab-pane fade" id="nav-ideas" role="tabpanel" aria-labelledby="nav-ideas-tab">
             {% if request.user.is_authenticated %}
             <div class="row w-50 mb-3">
                 <form method="post" action="{% url 'events:create-idea' event.id %}">
@@ -51,7 +51,7 @@
                 </form>
             </div>
             {% endif %}
-
+            {% comment %}
             {% for idea in ideas %}
             <div id="ideas-list" class="row">
                 <form id="upvote-idea-{{ idea.id }}" method="post" type="hidden" action="{% url 'events:upvote-idea' event.id idea.id %}">
@@ -73,7 +73,8 @@
                 </div>
             </div>
             {% endfor %}
-        </div> {% endcomment %}
+            {% endcomment %}
+        </div> 
 
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
     </div>
