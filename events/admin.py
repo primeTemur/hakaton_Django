@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Event,Idea
+from .models import Event,Idea,IdeaUpvote
 
 class EventAdmin(admin.ModelAdmin):
     list_display=(
@@ -20,3 +20,11 @@ class IdeaAdmin(admin.ModelAdmin):
         'owerview'
     )
 admin.site.register(Idea,IdeaAdmin)
+
+class IdeaUpvoteAdmin(admin.ModelAdmin):
+    list_display=(
+        'idea',
+        'user',
+    )
+admin.site.register(IdeaUpvote,IdeaUpvoteAdmin)
+

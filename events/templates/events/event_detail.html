@@ -51,12 +51,11 @@
                 </form>
             </div>
             {% endif %}
-            {% comment %}
-            {% for idea in ideas %}
+            {% for idea in event.ideas.all %}
             <div id="ideas-list" class="row">
-                <form id="upvote-idea-{{ idea.id }}" method="post" type="hidden" action="{% url 'events:upvote-idea' event.id idea.id %}">
+                {% comment %} <form id="upvote-idea-{{ idea.id }}" method="post" type="hidden" action="{% url 'events:upvote-idea' event.id idea.id %}">
                     {% csrf_token %}
-                </form>
+                </form> {% endcomment %}
                 <div class="col-md-6 mb-4">
                     <div class="card">
                         <div class="card-body">
@@ -67,13 +66,12 @@
                             <i class="fa-regular fa-heart" onclick="upvoteIdea({{ idea.id }})"></i>
                             {% endif %}
                             <span class="badge text-bg-secondary">{{ idea.upvotes.count }}</span>
-                            <p class="card-text">{{ idea.overview }}</p>
+                            <p class="card-text">{{ idea.owerview }}</p>
                         </div>
                     </div>
                 </div>
             </div>
             {% endfor %}
-            {% endcomment %}
         </div> 
 
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>

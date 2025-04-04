@@ -37,3 +37,25 @@ class Idea(BaseModel):
 
     def __str__(self):
         return self.title
+
+class IdeaUpvote(BaseModel):
+    idea=models.ForeignKey(
+        Idea,
+        related_name='upvotes',
+        related_query_name='upvote',
+        on_delete=models.CASCADE
+    )
+    user=models.ForeignKey(
+        'accounts.CustomUser',
+        related_name='upvotes',
+        related_query_name='upvote',
+        on_delete=models.CASCADE
+    )
+    class Meta:
+        unique_together = ('idea', 'user')
+        verbose_name = _('Idea Upvote')
+        verbose_name_plural = _('Idea Upvotes')
+    def __str__(self):
+        return f'{self.user.username} upvoted {self.idea.title}'
+
+    
